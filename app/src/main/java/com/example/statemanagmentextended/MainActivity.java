@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
             text = savedInstanceState.getString(KEY_TEXT);
         }
         updateCountText();
+        //updateSwitch();
 
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,8 +76,10 @@ public class MainActivity extends AppCompatActivity{
     private void updateSwitch(){
         if(isSwitched){
             wallpaper.setBackgroundColor(Color.BLACK);
+            aSwitch.setChecked(true);
         } else {
-            wallpaper.setBackgroundColor(Color.WHITE);
+           wallpaper.setBackgroundColor(Color.WHITE);
+            aSwitch.setChecked(false);
         }
     }
     private void  updateCountText() {
