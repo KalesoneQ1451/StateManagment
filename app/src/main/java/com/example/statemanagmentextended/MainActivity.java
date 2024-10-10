@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity{
     private boolean isChecked = false;
     private boolean isSwitched = false;
     private String text = "";
+    private TextView hidden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity{
         textEdit = findViewById(R.id.userText);
         checkBox = findViewById(R.id.checkBox);
         aSwitch = findViewById(R.id.switch1);
+        wallpaper = findViewById(R.id.wallpaper);
+        hidden = findViewById(R.id.hidden);
 
         if (savedInstanceState != null){
             count = savedInstanceState.getInt(KEY_COUNT);
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity{
             text = savedInstanceState.getString(KEY_TEXT);
         }
         updateCountText();
-        //updateSwitch();
+        updateSwitch();
 
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +65,13 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                 isSwitched = aSwitch.isChecked();
                 updateSwitch();
+            }
+        });
+        checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isChecked = checkBox.isChecked();
+                updateCheckbox();
             }
         });
     }
@@ -79,6 +89,15 @@ public class MainActivity extends AppCompatActivity{
             aSwitch.setChecked(true);
         } else {
            wallpaper.setBackgroundColor(Color.WHITE);
+            aSwitch.setChecked(false);
+        }
+    }
+    private void updateCheckbox(){
+        if(isChecked){
+            hidden.setVisibility(View.VISIBLE);
+            checkBox.setChecked(true);
+        } else {
+            hidden.setVisibility(View.INVISIBLE);
             aSwitch.setChecked(false);
         }
     }
