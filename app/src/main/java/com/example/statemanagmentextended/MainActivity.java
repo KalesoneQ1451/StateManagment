@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity{
         }
         updateCountText();
         updateSwitch();
+        updateCheckbox();
+        updateText();
 
         buttonIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +102,9 @@ public class MainActivity extends AppCompatActivity{
             hidden.setVisibility(View.INVISIBLE);
             aSwitch.setChecked(false);
         }
+    }
+    private void updateText(){
+        textEdit.setText(text);
     }
     private void  updateCountText() {
         textViewCount.setText("Licznik: " + count);
